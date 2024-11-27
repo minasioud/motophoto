@@ -1,3 +1,4 @@
+<?php
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 function my_theme_enqueue_styles() {
     $parenthandle = 'twenty-twenty-one-style'; // This is 'twenty-twenty-one-style' for the Twenty Twenty-one theme.
@@ -11,3 +12,4 @@ function my_theme_enqueue_styles() {
         $theme->get('Version') // this only works if you have Version in the style header
     );
 }
+
