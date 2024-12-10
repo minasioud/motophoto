@@ -42,6 +42,7 @@
                 <!-- Navigation Menu -->
                 <?php if ( has_nav_menu( 'primary' ) ) : ?>
                     <nav id="id-nav" class="nav_menu" aria-label="<?php esc_attr_e( 'Primary menu', 'twentytwentyone' ); ?>">
+                    
                         <div class="menu-button-container">
                             <button id="primary-mobile-menu" class="button" aria-controls="primary-menu-list" aria-expanded="false">
                                 <span class="dropdown-icon open"><?php esc_html_e( 'Menu', 'twentytwentyone' ); ?>
@@ -52,7 +53,7 @@
                                 </span>
                             </button>
                         </div>
-                            
+                
                         <?php
                             wp_nav_menu(
                                 array(
@@ -64,9 +65,10 @@
                                 )
                             );
                         ?>
-
+                             
                     </nav>
                 <?php endif; ?>
+               <?php /* <button class="contact-button">CONTACT</button>   */?>
             </div>
         </header>
 

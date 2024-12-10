@@ -31,6 +31,12 @@
         <?php endif; ?>
     </div>
 
-
+    <!-- Inclusion de la modale de contact -->
+    <?php get_template_part('template/contact-modal'); ?>
 </footer>
+
+
+<!-- Bouton pour ouvrir la modale -->
+<!--<button id="contact-button" class="contact-button">Contact</button> -->
+
 <?php wp_footer(); ?>

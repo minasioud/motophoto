@@ -24,8 +24,20 @@ function motophoto_enqueue_styles() {
         'https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap',
         false
     );
+
+    // Charger les polices Font Awesome
+    wp_enqueue_style(
+        'font-awesome',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css',
+        false
+    );
+
+    // Charger le script JS personnalisé
+    wp_enqueue_script('motophoto-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'motophoto_enqueue_styles');
+
+   
 
 // Ajouter des fonctionnalités spécifiques au thème enfant
 function motophoto_setup() {
@@ -63,12 +75,7 @@ function motophoto_register_sidebars() {
 }
 add_action('widgets_init', 'motophoto_register_sidebars');
 
-// Charger un script JS personnalisé
-function motophoto_enqueue_scripts() {
-    wp_enqueue_script('motophoto-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'motophoto_enqueue_scripts');
-
+// Ajouter un espace pour les widgets du pied de page
 register_sidebar(array(
     'name'          => __('Footer Widget Area', 'twentytwentyonechild'),
     'id'            => 'footer-widgets',
@@ -78,3 +85,24 @@ register_sidebar(array(
     'before_title'  => '<h3 class="footer-widget-title">',
     'after_title'   => '</h3>',
 ));
+
+
+
+function afficher_single_photo() {
+    // Définir le chemin du fichier à inclure
+    $file_path = get_stylesheet_directory() . '/template/single-photo.php';
+    
+    // Vérifier si le fichier existe
+    if (file_exists($file_path)) {
+        ob_start(); // Démarre la mise en mémoire tampon de sortie.
+        include $file_path; // Inclut le fichier contact-modal.php.
+        return ob_get_clean() ; // Récupère et retourne le contenu du tampon de sortie.
+    } else {
+        // Si le fichier n'existe pas, retourner un message d'erreur.
+        return '<p>Le fichier de modèle de contact est introuvable.</p>';
+    }
+}
+
+add_shortcode('content_single', 'afficher_single_photo');
+
+?>
