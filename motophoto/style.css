@@ -20,6 +20,12 @@ Text Domain:  twentytwentyonechild
     --couleur-gris-encore-plus-clair: #E5E5E5;
 }
 
+/* Empêcher le scrolling horizontal */
+html,
+body {
+    overflow-x: hidden;
+}
+
 /* Style H1 Desktop */
 
 h1 {
@@ -57,6 +63,18 @@ h3 {
     text-decoration-skip-ink: none;
 }
 
+input:focus,
+button:focus {
+    outline: none;
+    /* Supprime les points */
+}
+
+input.no-focus:focus,
+button.no-focus:focus {
+    outline: none;
+    /* Supprime les points */
+}
+
 /************************************************** Header container */
 .conteneur_header {
     display: flex;
@@ -74,7 +92,7 @@ h3 {
     transition: box-shadow 0.3s ease-in-out;
     /* Animation fluide */
 
-    border: solid 1px #E00000;
+    /*border: solid 1px #E00000;*/
 }
 
 .logo_conteneur {
@@ -177,6 +195,16 @@ h3 {
     justify-content: center;
     align-items: center;
     height: auto;
+
+    text-decoration: none;
+
+}
+
+.nav_conteneur a:focus {
+    outline: none !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+    color: #000000 !important;
 }
 
 .nav_conteneur a:hover {
@@ -203,13 +231,14 @@ h3 {
 
 /* Contenu de la modale */
 .modal-content {
-    width: 35vw;
+    width: 30vw;
     height: auto;
 
     max-height: 84vw;
+    min-height: 250px;
 
     min-width: 250px;
-    min-height: 250px;
+
 
     margin: 0px;
     padding: 10px;
@@ -266,9 +295,28 @@ h3 {
     align-items: center;
     justify-content: center;
     width: 25vw;
+
+    padding: 0px;
+    margin: 0;
+    line-height: 18px;
+
+    /*border: solid 1px #ff0040;*/
 }
 
 /* Style pour tous les champs de formulaire */
+.wpcf7-form label {
+    width: 25vw;
+    text-align: center;
+
+    font-size: 0.8vw;
+    line-height: 30px;
+
+    padding: 0px;
+    margin: 0;
+
+    /*border: solid 1px #4400ff;*/
+}
+
 .wpcf7-form input[type="text"],
 .wpcf7-form input[type="email"] {
     width: 25vw;
@@ -276,9 +324,16 @@ h3 {
     border: 1px solid #B8BBC2;
     box-sizing: border-box;
 
-    font-size: 14px;
+    font-size: 0.8vw;
+    line-height: 30px;
+
     margin: 0px;
     padding: 0 5px 0 5px;
+
+    /* Supprime les points */
+    outline: none;
+
+    /*border: solid 1px #33ff00;*/
 }
 
 /* Style spécifique pour textarea */
@@ -287,18 +342,21 @@ h3 {
     height: 100px;
     border-radius: 8px;
     border: 1px solid #B8BBC2;
-    font-size: 14px;
+
+    font-size: 0.8vw;
     line-height: 14px;
+
     /* Désactive le redimensionnement */
     resize: none;
+
+    padding: 5px;
+    margin: 0;
+
+    /* Supprime les points */
+    outline: none !important;
 }
 
-.wpcf7-form label {
-    width: 25vw;
-    text-align: center;
-    font-size: 14px;
-    line-height: 14px;
-}
+
 
 /* Style pour le bouton submit */
 .wpcf7-form input[type="submit"] {
@@ -307,9 +365,14 @@ h3 {
     background-color: #D8D8D8 !important;
     border: 1px solid #B8BBC2;
     text-align: center;
-    font-size: 16px;
+
+    font-size: 0.9vw;
+
     font-weight: 400;
     border-radius: 2px;
+    /* Supprime les points */
+    outline: none;
+
 }
 
 /* Ajouter un effet au survol */
@@ -335,7 +398,7 @@ h3 {
 }
 
 .wpcf7-not-valid-tip {
-    font-size: 14px;
+    font-size: 0.8vw;
     text-align: center;
 }
 
@@ -349,11 +412,70 @@ h3 {
     /* Centre verticalement (si nécessaire) */
 }
 
-/*********************************************/
+.wpcf7 form .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output {
+    padding: 0 5px 0 5px;
+    margin: 0;
+    font-size: 0.8vw;
+}
+
+/******************************************* FIN Modal ******/
+/******************************************* ACCUEIL DEBUT ******/
+
+.main_container {
+    max-width: 100%;
+    height: auto;
+
+
+    border: solid 1px #E00000;
+}
+
+.banner-images img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+    max-width: 100%;
+
+    border: solid 1px #0efe02;
+}
+
+.banner-images p {
+    position: absolute;
+
+
+    right: 30%;
+    top: 70%;
+    z-index: 9999;
+    font-size: 96px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+
+    font-style: italic;
+    /* Accentuer l'italique */
+    transform: skew(-10deg);
+
+    color: transparent;
+    line-height: 142.18px;
+
+    /* Contour du texte */
+    -webkit-text-stroke: 2px #FFFFFF;
+}
+
+.gallerie-container {
+    border: solid 1px #fed002;
+}
+
+
+
+
+
+
+
+
 .photo-navigation {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 0;
 }
 
 .entry-content {
@@ -396,9 +518,11 @@ h3 {
 }
 
 /********************/
+/*********************************************************** Footer ****************/
+.footer-conteneur {
+    /*border: solid 1px #2c03f7;*/
+}
 
-
-/************** Footer ****************/
 .nav_fconteneur {
     display: flex;
     flex-direction: row;
@@ -437,6 +561,13 @@ h3 {
     font-weight: 700;
 }
 
+.nav_fconteneur a:focus {
+    outline: none !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+    color: #000000 !important;
+}
+
 .nav_fmenu {
     display: flex;
     justify-content: center;
@@ -448,6 +579,8 @@ h3 {
 
     /*border: solid 1px #03f703;*/
 }
+
+/******************************************************* FIN Footer ******************/
 
 .wp-block-cover__inner-container {
     height: 70vh;

@@ -10,8 +10,8 @@
     <section class="gallerie-container">
         <?php
             // Vérifiez si le fichier existe avant de l'inclure
-            if (file_exists(get_stylesheet_directory() . '/template/archive-photo.php')) {
-                include(get_stylesheet_directory() . '/template/archive-photo.php');
+            if (file_exists(get_stylesheet_directory() . '/template/single-photo.php')) {
+                include(get_stylesheet_directory() . '/template/single-photo.php');
             }
 
         ?>

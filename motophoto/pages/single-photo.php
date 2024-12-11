@@ -1,6 +1,4 @@
-<?php 
-/* Template Name: single-photo.php */
-get_header(); ?>
+
 
 <div class="single-photo-content">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -23,4 +21,4 @@ get_header(); ?>
     <?php endwhile; endif; ?>
 </div>
 
-<?php get_footer(); ?>
+

@@ -61,13 +61,30 @@ function motophoto_custom_excerpt_length($length) {
 }
 add_filter('excerpt_length', 'motophoto_custom_excerpt_length');
 
+// Exemple d'ajout d'un widget personnalisé
+function motophoto_register_sidebars() {
+    register_sidebar(array(
+        'name'          => __('Sidebar Principale', 'twentytwentyonechild'),
+        'id'            => 'main-sidebar',
+        'description'   => __('Ajouter des widgets ici pour apparaître dans la sidebar principale.', 'twentytwentyonechild'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
+}
+add_action('widgets_init', 'motophoto_register_sidebars');
 
-
-
-
-
-
-
+// Ajouter un espace pour les widgets du pied de page
+register_sidebar(array(
+    'name'          => __('Footer Widget Area', 'twentytwentyonechild'),
+    'id'            => 'footer-widgets',
+    'description'   => __('Widgets apparaissant dans le pied de page.', 'twentytwentyonechild'),
+    'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3 class="footer-widget-title">',
+    'after_title'   => '</h3>',
+));
 
 
 

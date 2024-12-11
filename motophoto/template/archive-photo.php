@@ -1,5 +1,3 @@
-<?php get_header(); ?>
-
 <div class="photo-archive">
     <h1>Galerie de Photos</h1>
     <div class="photos-grid">
@@ -22,4 +20,4 @@
     </div>
 </div>
 
-<?php get_footer(); ?>
+
