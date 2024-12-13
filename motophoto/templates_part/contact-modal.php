@@ -1,3 +1,14 @@
+<?php
+/**
+ * The template for displaying contact modal
+ *
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty_One
+ * @since Twenty Twenty-One 1.0
+ * Autor: mina
+ */
+?>
 <div id="contact-modal" class="contact-modal" >
     <div class="modal-content">
         <div class="modal-header">

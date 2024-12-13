@@ -32,7 +32,7 @@
     </div>
 
     <!-- Inclusion de la modale de contact -->
-    <?php get_template_part('template/contact-modal'); ?>
+    <?php get_template_part('templates_part/contact-modal'); ?>
 </footer>
 
 <?php wp_footer(); ?>

@@ -8,14 +8,14 @@
     </section> 
 
     <section class="gallerie-container">
+        <p class="galerie-titre">GALERIE PHOTOS</p>
         <?php
             // Vérifiez si le fichier existe avant de l'inclure
-            if (file_exists(get_stylesheet_directory() . '/template/single-photo.php')) {
-                include(get_stylesheet_directory() . '/template/single-photo.php');
+            if (file_exists(get_stylesheet_directory() . '/templates_part/galerie.php')) {
+                include(get_stylesheet_directory() . '/templates_part/galerie.php');
             }
 
         ?>
-    </section>
 
 
 

@@ -20,3 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.style.display = "none";
     });
 });
+
+
+
+// Fonction gallerie-photos :
+function filterGallery(category) {
+    let items = document.querySelectorAll('.gallery .item');
+    items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+            item.classList.add('show');
+        } else {
+            item.classList.remove('show');
+        }
+    });
+}
+
+// Charger toutes les images au début
+filterGallery('all');

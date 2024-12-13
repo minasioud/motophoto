@@ -37,8 +37,6 @@ function motophoto_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'motophoto_enqueue_styles');
 
-   
-
 // Ajouter des fonctionnalités spécifiques au thème enfant
 function motophoto_setup() {
     // Support des menus
@@ -64,28 +62,16 @@ add_filter('excerpt_length', 'motophoto_custom_excerpt_length');
 
 
 
-
-
-
-
-
-
-
-function afficher_single_photo() {
-    // Définir le chemin du fichier à inclure
-    $file_path = get_stylesheet_directory() . '/template/single-photo.php';
-    
-    // Vérifier si le fichier existe
-    if (file_exists($file_path)) {
-        ob_start(); // Démarre la mise en mémoire tampon de sortie.
-        include $file_path; // Inclut le fichier contact-modal.php.
-        return ob_get_clean() ; // Récupère et retourne le contenu du tampon de sortie.
-    } else {
-        // Si le fichier n'existe pas, retourner un message d'erreur.
-        return '<p>Le fichier de modèle de contact est introuvable.</p>';
+function photo_custom_post_type_template($template) {
+    if (is_post_type_archive('photo')) {
+        $theme_files = ['galerie.php'];
+        $exists_in_theme = locate_template($theme_files, false);
+        if ($exists_in_theme != '') {
+            return $exists_in_theme;
+        }
     }
+    return $template;
 }
+add_filter('archive_template', 'photo_custom_post_type_template');
 
-add_shortcode('content_single', 'afficher_single_photo');
 
-?>

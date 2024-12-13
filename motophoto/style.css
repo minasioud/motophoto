@@ -497,6 +497,15 @@ button.no-focus:focus {
 
 /*************************************/
 /* Style pour la grille de photos dans l'archive */
+.galerie-container div {
+    border: solid 1px #2c03f7;
+}
+
+.gallerie-container h2 {
+    align-items: center;
+    text-align: center;
+}
+
 .photo-archive .photos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -617,6 +626,109 @@ button.no-focus:focus {
     height: 150px !important;
 }
 
+/*********************************************** single-photo **********************************************************************/
+.photo-archive {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.photo-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background-color: #fff;
+}
+
+.photo-item:hover {
+    transform: scale(1.02);
+}
+
+.photo-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.photo-content {
+    padding: 15px;
+}
+
+.photo-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.photo-date,
+.photo-type,
+.photo-reference,
+.photo-categories,
+.photo-formats {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+
+/************************************ galerie.php *******************************************/
+/* Galerie de photos */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.photo-item .photo-title {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.photo-item:hover .photo-title {
+    display: block;
+}
+
+
 
 
 
@@ -693,6 +805,7 @@ button.no-focus:focus {
     }
 
 }
+
 
 /*******************************tablette************ max-width: 1192px *** min-width: 701px **************************************/
 @media (min-width: 701px) and (max-width: 1192px) {}
