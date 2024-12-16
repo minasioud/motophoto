@@ -20,6 +20,25 @@ Text Domain:  twentytwentyonechild
     --couleur-gris-encore-plus-clair: #E5E5E5;
 }
 
+.galerie-photos-plus .contact_button:active,
+.photo_pagination-items .contact_button:active {
+    animation: clickAnimation 0.2s ease forwards;
+}
+
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 /* Empêcher le scrolling horizontal */
 html,
 body {
@@ -197,7 +216,6 @@ button.no-focus:focus {
     height: auto;
 
     text-decoration: none;
-
 }
 
 .nav_conteneur a:focus {
@@ -332,8 +350,6 @@ button.no-focus:focus {
 
     /* Supprime les points */
     outline: none;
-
-    /*border: solid 1px #33ff00;*/
 }
 
 /* Style spécifique pour textarea */
@@ -420,66 +436,417 @@ button.no-focus:focus {
 }
 
 /******************************************* FIN Modal ******/
-/******************************************* ACCUEIL DEBUT ******/
+/******************************************* Page ACCUEIL-front-page DEBUT ******/
 
 .main_container {
     max-width: 100%;
     height: auto;
 
+    /*border: solid 1px #E00000;*/
+}
 
-    border: solid 1px #E00000;
+.banner-images {
+    position: relative;
+    /* Assurez-vous que l'élément parent a un positionnement relatif */
 }
 
 .banner-images img {
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 1;
+    width: 1440vw;
+    height: auto;
+    object-fit: cover;
+    /* Contrôle la façon dont l'image remplit le conteneur */
+    display: block;
+    /* Évite les espaces indésirables autour des images */
     max-width: 100%;
 
-    border: solid 1px #0efe02;
+    /* border: solid 1px #0efe02;*/
 }
 
+/* titre Photo Event */
 .banner-images p {
     position: absolute;
 
-
-    right: 30%;
-    top: 70%;
+    right: 16%;
+    top: 41%;
     z-index: 9999;
-    font-size: 96px;
-    font-family: 'Space Mono', monospace;
+    font-size: 7vw;
+    font-family: monospace;
     font-weight: 700;
 
     font-style: italic;
     /* Accentuer l'italique */
-    transform: skew(-10deg);
+    transform: skew(1deg);
 
     color: transparent;
-    line-height: 142.18px;
+    line-height: 142px;
 
     /* Contour du texte */
     -webkit-text-stroke: 2px #FFFFFF;
 }
 
-.gallerie-container {
-    border: solid 1px #fed002;
-}
-
-
-
-
-
-
-
-
-.photo-navigation {
+/***** section pour ACCUEIL-galerie ****************/
+.galerie-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+
+    /*border: solid 3px #fed002;*/
+}
+
+/******************************************* Page ACCUEIL-front-page FIN ******/
+/******************************************* Page ACCUEIL-page-galrie DEBUT ******/
+/******************************************* Page ACCUEIL-page-galrie-filters DEBUT ******/
+.galerie-filters {
+    width: 80vw;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin: 45px 0px 30px 0;
+
+    /*border: solid 1px #E00000;*/
+}
+
+.galerie-filters-form {
+    width: 100%;
+    height: auto;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    grid-template-columns: repeat(2, minmax(500px, 1fr));
+    gap: 10px;
+    margin: 0;
+
+    /*border: solid 1px #6004ff !important;*/
+}
+
+.galerie-filters-form-item {
+    width: 100%;
+    height: auto;
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    /*border: solid 1px #04e000;*/
+}
+
+.droite {
+    justify-content: flex-end;
+}
+
+.gauche {
     justify-content: space-between;
+}
+
+.galerie-filters-form-item select {
+    width: 45%;
+    padding: 10px 20px;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: 'Poppins-google-fonts', sans-serif;
+    border-radius: 8px;
+    gap: 10px;
+    border: solid 1px #B8BBC2;
+    outline: none;
+}
+
+/******************************************* Page ACCUEIL-page-galrie-filters FIN ******/
+/******************************************* Page ACCUEIL-page-galrie-affichage galerie DEBUT ******/
+.galerie-photos {
+    width: 80vw;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    grid-template-columns: repeat(2, minmax(500px, 1fr)) !important;
+    gap: 10px;
     margin: 0;
 }
 
-.entry-content {
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 0 !important;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    background-color: #fff;
+    border: solid 1px #fff !important;
+}
+
+.photo-img {
+    width: 100%;
+    height: auto;
+}
+
+.photo-item img {
+    width: 100% !important;
+    height: 500px !important;
+    object-fit: cover;
+
+
+    display: block;
+}
+
+.photo-info {
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+    border: solid 1px #4f00fa;
+}
+
+.galerie-photos-plus .contact_button,
+.photo_pagination-items .contact_button {
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 17px;
+
+    border-radius: 2px;
+    padding: 8px 15px;
+    font-weight: 400;
+    cursor: pointer;
+    width: 15vw;
+    background-color: #D8D8D8 !important;
+    border: 1px solid #B8BBC2;
+    text-align: center;
+    margin: 20px 0;
+    outline: none;
+    /* Ajout d'une transition globale */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.galerie-photos-plus .contact_button:hover,
+.photo_pagination-items .contact_button:hover {
+    background-color: #BEBEBE;
+    /* Couleur plus foncée au survol */
+    font-weight: 700;
+    transform: scale(1.03);
+}
+
+.galerie-photos-plus .contact_button:active,
+.photo_pagination-items .contact_button:active {
+    background-color: #BEBEBE;
+    /* Couleur plus foncée au survol */
+    font-weight: 700;
+    transform: scale(0.95);
+    /* Réduction légère au clic */
+    transition: transform 0.1s ease;
+    animation: clickAnimation 0.2s ease forwards;
+
+}
+
+.photo-item:hover {
+    transform: scale(1.03);
+}
+
+.photo-item .photo-title {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.photo-item:hover .photo-title {
+    display: block;
+}
+
+.photo-date,
+.photo-type,
+.photo-reference,
+.photo-categories,
+.photo-formats {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.galerie-photos-plus {
+    width: 80vw;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
     margin: 0;
+}
+
+/******************************************* Page ACCUEIL-page-galrie-affichage galerie FIN ******/
+/******************************************* Page ACCUEIL-page-galrie FIN ******/
+/******************************************* ACCUEIL-SINGLE DEBUT ******/
+
+.single-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+    /*border: solid 1px #fa0000;*/
+}
+
+.photo-container {
+    width: 80vw;
+    display: grid;
+    align-items: end;
+    justify-items: center;
+
+    grid-template-columns: repeat(2, minmax(500px, 1fr)) !important;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+
+    /*border: solid 1px #fa0000;*/
+}
+
+.single-photo-info {
+    width: 39vw;
+    padding: 10px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    border-bottom: 1px solid #000000;
+}
+
+.single-photo-info-title {
+    font-family: monospace;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 66px;
+    line-height: 58px;
+}
+
+.single-photo-info p {
+    font-family: monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.photo-affiche {
+    width: 39vw;
+    /*border: solid 1px #00fa00;*/
+}
+
+.photo-thumbnail {
+    padding: 0px;
+    margin: 0;
+    border: 0;
+    /* border: solid 1px #0048ff;*/
+}
+
+.photo-thumbnail img {
+    width: 100% !important;
+    height: 800px !important;
+    object-fit: fill;
+
+    /*border: solid 1px #d34dd1;*/
+}
+
+.photo_pagination_container {
+    width: 80vw;
+    display: grid;
+    align-items: end;
+    justify-items: center;
+
+    grid-template-columns: repeat(2, minmax(500px, 1fr)) !important;
+    gap: 10px;
+    margin: 0;
+    padding: 10px 10px;
+
+    /*border: solid 1px #fa0000;*/
+}
+
+.photo_pagination-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 39vw;
+    margin: 0;
+    padding: 0;
+
+    /*border: solid 1px #4f00fa;*/
+}
+
+.photo_pagination-items p {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 21px;
+
+}
+
+/* Style pour le bouton submit */
+.wpcf7-form input[type="submit"] {
+    cursor: pointer;
+    width: 25vw;
+    background-color: #D8D8D8 !important;
+    border: 1px solid #B8BBC2;
+    text-align: center;
+    font-size: 0.9vw;
+    font-weight: 400;
+    border-radius: 2px;
+    outline: none;
+
+}
+
+.photo-container2 {
+    width: 80vw;
+    display: grid;
+    align-items: end;
+    justify-items: center;
+
+    grid-template-columns: repeat(2, minmax(500px, 1fr)) !important;
+    gap: 10px;
+    margin: 40px;
+    padding: 0;
+}
+
+
+
+
+
+/*
+.photo_pagination-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 39vw;
+    margin: 0;
+
+    border: solid 1px #4f00fa;
 }
 
 .photo-navigation .nav-previous,
@@ -495,38 +862,17 @@ button.no-focus:focus {
     color: #0073aa;
 }
 
-/*************************************/
-/* Style pour la grille de photos dans l'archive */
-.galerie-container div {
-    border: solid 1px #2c03f7;
-}
 
-.gallerie-container h2 {
-    align-items: center;
+
+.pagination {
+    margin: 20px 0;
     text-align: center;
 }
 
-.photo-archive .photos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
+*/
 
-.photo-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+/******************************************* ACCUEIL-SINGLE FIN ******/
 
-.photo-thumbnail img {
-    max-width: 100%;
-    height: auto;
-}
-
-/********************/
 /*********************************************************** Footer ****************/
 .footer-conteneur {
     /*border: solid 1px #2c03f7;*/
@@ -586,155 +932,13 @@ button.no-focus:focus {
     margin: 0;
     padding: 0;
 
-    /*border: solid 1px #03f703;*/
+
 }
-
-/******************************************************* FIN Footer ******************/
-
-.wp-block-cover__inner-container {
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0;
-}
-
-
-.wp-block-cover__inner-container p {
-    font-family: "Space Mono", monospace;
-    font-style: italic;
-    font-weight: 700;
-
-    color: transparent;
-    /* Rendre l'intérieur des lettres transparent */
-    -webkit-text-stroke: 2px rgb(255, 255, 255);
-    /* Contour des lettres */
-
-
-    white-space: nowrap;
-    /* Empêche le texte de se casser sur plusieurs lignes */
-
-    display: flex;
-    /* Pour gérer le positionnement si besoin */
-    align-items: center;
-    /* Centrage vertical */
-    justify-content: center;
-    /* Centrage horizontal */
-    font-size: 100px !important;
-    width: 1000px !important;
-    height: 150px !important;
-}
-
-/*********************************************** single-photo **********************************************************************/
-.photo-archive {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.photo-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    background-color: #fff;
-}
-
-.photo-item:hover {
-    transform: scale(1.02);
-}
-
-.photo-thumbnail img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.photo-content {
-    padding: 15px;
-}
-
-.photo-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 0 10px;
-}
-
-.photo-date,
-.photo-type,
-.photo-reference,
-.photo-categories,
-.photo-formats {
-    font-size: 14px;
-    color: #555;
-    margin: 5px 0;
-}
-
-.pagination {
-    margin: 20px 0;
-    text-align: center;
-}
-
-/************************************ galerie.php *******************************************/
-/* Galerie de photos */
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
-}
-
-.photo-item {
-    position: relative;
-    overflow: hidden;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.photo-item:hover {
-    transform: scale(1.05);
-}
-
-.photo-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.photo-item .photo-title {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 10px;
-    font-size: 16px;
-    text-align: center;
-    font-weight: bold;
-    display: none;
-}
-
-.photo-item:hover .photo-title {
-    display: block;
-}
-
-
-
 
 
 /*******************************mobile************ max-width: 700px **************************************/
 @media all and (max-width: 700px) {
-
+    /*
     .conteneur_header {
         display: flex;
         flex-direction: column;
@@ -803,7 +1007,7 @@ button.no-focus:focus {
     .nav_conteneur li {
         margin: 15px 0;
     }
-
+*/
 }
 
 

@@ -1,4 +1,25 @@
-<section class="galerie-filters">
+<?php get_header(); ?>
+
+<!-- Contenu principal -->
+<main id="primary" class="main_container">
+    <section class="banner-images">
+        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/nathalie-11.jpeg'; ?>" alt="Photographe Event">
+        <p>PHOTOGRAPHE EVENT</p>
+    </section> 
+
+    <section class="galerie-container">
+        <?php /*   
+            <?php
+                // Vérifiez si le fichier existe avant de l'inclure
+                if (file_exists(get_stylesheet_directory() . '/templates_part/galerie.php')) {
+                    include(get_stylesheet_directory() . '/templates_part/galerie.php');
+                } else {
+                    echo '<p>Le contenue est introuvable !</p>';
+                }
+            ?>
+        */ ?>
+<!----------------------------------------------------------- galerie.php -->
+        <section class="galerie-filters">
             <form id="galerie-filters-form"  method="GET" action="" class="galerie-filters-form">
                 
                 <div class="galerie-filters-form-item gauche">
@@ -33,7 +54,7 @@
                     </select>
                 </div>
                 <div class="galerie-filters-form-item droite">
-                    <!-- Champ date -->
+                    <!-- Champ Tri -->
                     <select id="sort-date" name="sort" onchange="this.form.submit()">
                         <option value="">TRIER PAR</option>
                         <option value="DESC">Plus récentes</option>
@@ -52,20 +73,11 @@
                 // Crée une requête pour récupérer les posts du type "galerie_photo"
                 $args = array(
                     'post_type' => 'galerie_photo',   // Filtrer uniquement le type "galerie_photo"
-                    'posts_per_page' => 8,   // Récupérer toutes les photos
+                    'posts_per_page' => -1,   // Récupérer toutes les photos
+                    'orderby' => 'meta_value_num',
+                    'meta_key' => 'annee',      // Trier par date de publication
+                    'order' => 'DESC',        // Du plus récent au plus ancien
                 );
-               
-                // Si un filtre est appliqué, ajouter la taxonomie à la requête
-                if (isset($_GET['categorie']) && !empty($_GET['categorie'])) {
-                    $args['tax_query'] = array(
-                        array(
-                            'taxonomy' => 'categorie', // Taxonomie associée aux photos
-                            'field' => 'term_id',
-                            'terms' => $_GET['categorie'],
-                            'operator' => 'IN'
-                        ),
-                    );
-                }
                 
                 // La requête WP
                 $photo_query = new WP_Query( $args );
@@ -73,7 +85,6 @@
                 // Vérifie s'il y a des posts
                 if ( $photo_query->have_posts() ) :
                     while ( $photo_query->have_posts() ) : $photo_query->the_post();
-                        
                         // Récupère l'ID de l'image à la Une
                         if ( has_post_thumbnail() ) :
                             $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );  // Utilise la taille 'large' pour la galerie
@@ -132,7 +143,10 @@
                 endif;
             ?>
         </article>
-        <article class="galerie-photos-plus">
-            <!-- Bouton pour charger plus d'images -->
-            <button id="loadMore" class="contact_button" data-page="1">Afficher plus</button>
-        </article>
+
+<!----------------------------------------------------------- galerie.php -->
+    </section>
+</main>
+<!-- FIN #primary -->
+
+<?php get_footer(); ?>
