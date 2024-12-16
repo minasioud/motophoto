@@ -75,9 +75,12 @@
         </div>
     </section> 
 
-
+    <article class="galerie-photos-single">
+        <p>Vous aimerez AUSSI</p>
+    </article>
 
     <section class="photo-container2">
+        
         <?php
             // Crée une requête pour récupérer les posts du type "galerie_photo"
             $args = array(
