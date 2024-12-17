@@ -107,7 +107,7 @@
         // Afficher les résultats
         ?>
         <div class="wrap">
-            <h1>Liste des Types et Références</h1></br>
+            <h1>Liste des Types, Références et Années</h1></br>
             <table class="widefat fixed">
                 <thead>
                     <tr>
@@ -115,7 +115,6 @@
                         <th scope="col" class="manage-column">Type</th>
                         <th scope="col" class="manage-column">Référence</th>
                         <th scope="col" class="manage-column">Année</th>
-                        <th scope="col" class="manage-column">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,7 +132,6 @@
                                     <td><?php echo esc_html($type); ?></td>
                                     <td><?php echo esc_html($reference); ?></td>
                                     <td><?php echo esc_html($Annee); ?></td>
-                                    <td><input type="submit" name="save_reference_type" value="Modifier" class="button button-primary"></td>
                                 </tr>
                                 <?php
                             }
@@ -178,6 +176,7 @@
             'liste-annee', // Slug de la page
             'afficher_liste_annee' // Fonction callback pour afficher le contenu
         );
+
     }
     add_action('admin_menu', 'ajouter_sous_menu_types_references_annee');
 
@@ -205,7 +204,54 @@
                 )
             );
         }
-        
+
+        // Nombre d'occurrences Référence
+        global $wpdb;
+
+        // Récupérer toutes les Référence et leur nombre d'occurrences
+        $results = $wpdb->get_results("
+            SELECT meta_value AS reference, post_id AS postid, COUNT(*) AS count
+            FROM {$wpdb->postmeta}
+            WHERE meta_key = 'Reference' AND meta_value != ''
+            GROUP BY meta_value
+            ORDER BY count DESC
+        ");
+
+        // Afficher les résultats
+        ?>
+        <div class="wrap">
+            <h1>Liste des Référence</h1>
+            <table class="widefat fixed">
+                <thead>
+                    <tr>
+                        <th scope="col" class="manage-column">Référence</th>
+                        <th scope="col" class="manage-column">Nombre d'occurrences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if (!empty($results)) {
+                        foreach ($results as $row) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <a href="<?php echo admin_url('post.php?post=' . urlencode($row->postid) . '&action=edit'); ?>">
+                                        <?php echo esc_html($row->reference); ?>
+                                    </a>
+                                </td>
+                                <td><?php echo intval($row->count); ?></td>
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo '<tr><td colspan="2">Aucune Année trouvé.</td></tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
+
         // Créer la requête WP_Query
         $query = new WP_Query($args);
         
@@ -226,7 +272,6 @@
                     <tr>
                         <th scope="col" class="manage-column">Titre de la Photo</th>
                         <th scope="col" class="manage-column">Références</th>
-                        <th scope="col" class="manage-column">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -241,7 +286,6 @@
                                 <tr>
                                     <td><?php the_title(); ?></td>
                                     <td><?php echo esc_html($reference); ?></td>
-                                    <td><input type="submit" name="save_reference_type" value="Modifier" class="button button-primary"></td>
                                 </tr>
                                 <?php
                             }
@@ -274,7 +318,7 @@
     // Fonction pour afficher la page avec toutes les occurrences le champs "Type":
     function afficher_liste_types() {
         $paged = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1; // Page actuelle
-        $posts_per_page = 25; // Nombre de résultats par page
+        $posts_per_page = 10; // Nombre de résultats par page
 
         // Récupérer tous les posts de type "photo"
         $args = array(
@@ -289,14 +333,60 @@
                 array(
                     'key' => 'Type',       // Nom du champ personnalisé (ACF)
                     'value' => $search_type, // Valeur à rechercher
-                    'compare' => '='   // Recherche partielle (ou utilisez '=' pour une correspondance exacte)
+                    'compare' => 'LIKE'   // Recherche partielle (ou utilisez '=' pour une correspondance exacte)
                 )
             );
         }
         
+                
+        // Nombre d'occurrences TYPE
+        global $wpdb;
+
+        // Récupérer tous les types et leur nombre d'occurrences
+        $results = $wpdb->get_results("
+            SELECT meta_value AS type, post_id AS postid, COUNT(*) AS count
+            FROM {$wpdb->postmeta}
+            WHERE meta_key = 'Type' AND meta_value != ''
+            GROUP BY meta_value
+            ORDER BY count DESC
+        ");
+
+
+        
+        // Afficher les résultats
+        ?>
+        <div class="wrap">
+            <h1>Liste des Types</h1>
+            <table class="widefat fixed">
+                <thead>
+                    <tr>
+                        <th scope="col" class="manage-column">Type</th>
+                        <th scope="col" class="manage-column">Nombre d'occurrences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if (!empty($results)) {
+                        foreach ($results as $row) {
+                            ?>
+                            <tr>
+                                <td><?php echo esc_html($row->type); ?></td>
+                                <td><?php echo intval($row->count); ?></td>
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo '<tr><td colspan="2">Aucun type trouvé.</td></tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
+
+
         // Créer la requête WP_Query
         $query = new WP_Query($args);
-        
         // Afficher les résultats
         ?>
         <div class="wrap">
@@ -314,7 +404,6 @@
                     <tr>
                         <th scope="col" class="manage-column">Titre de la Photo</th>
                         <th scope="col" class="manage-column">Type</th>
-                        <th scope="col" class="manage-column">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -326,12 +415,12 @@
                                 $type = get_field('Type'); 
                                 ?>
                                 <tr>
-                                    <td><?php the_title(); ?></td>
-                                    <td><?php echo esc_html($type); ?></td>
                                     <td>
-                                    <a href="<?php echo admin_url('admin.php?page=modifier-type&post_id=' . get_the_ID()); ?>" class="button">Modifier</a>
-                                    <a href="<?php echo admin_url('admin-post.php?action=supprimer-type&post_id=' . get_the_ID()); ?>" class="button button-danger">Supprimer</a>
+                                        <a href="<?php echo admin_url('post.php?post=' . urlencode($row->postid) . '&action=edit'); ?>">
+                                            <?php the_title(); ?>
+                                        </a>
                                     </td>
+                                    <td><?php echo esc_html($type); ?></td>
                                 </tr>
                                 <?php
                             }
@@ -384,6 +473,49 @@
                 )
             );
         }
+        // Nombre d'occurrences Annee
+        global $wpdb;
+
+        // Récupérer toutes les Années et leur nombre d'occurrences
+        $results = $wpdb->get_results("
+            SELECT meta_value AS annee, post_id AS postid, COUNT(*) AS count
+            FROM {$wpdb->postmeta}
+            WHERE meta_key = 'Annee' AND meta_value != ''
+            GROUP BY meta_value
+            ORDER BY count DESC
+        ");
+
+        // Afficher les résultats
+        ?>
+        <div class="wrap">
+            <h1>Liste des Année</h1>
+            <table class="widefat fixed">
+                <thead>
+                    <tr>
+                        <th scope="col" class="manage-column">Année</th>
+                        <th scope="col" class="manage-column">Nombre d'occurrences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if (!empty($results)) {
+                        foreach ($results as $row) {
+                            ?>
+                            <tr>
+                                <td><?php echo esc_html($row->annee); ?></td>
+                                <td><?php echo intval($row->count); ?></td>
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo '<tr><td colspan="2">Aucune Année trouvé.</td></tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
+
 
         // Créer la requête WP_Query
         $query = new WP_Query($args);
@@ -405,7 +537,6 @@
                     <tr>
                         <th scope="col" class="manage-column">Titre de la Photo</th>
                         <th scope="col" class="manage-column">Année</th>
-                        <th scope="col" class="manage-column">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -420,7 +551,6 @@
                                 <tr>
                                     <td><?php the_title(); ?></td>
                                     <td><?php echo esc_html($Annee); ?></td>
-                                    <td><input type="submit" name="save_reference_type" value="Modifier" class="button button-primary"></td>
                                 </tr>
                                 <?php
                             }
@@ -450,6 +580,52 @@
         wp_reset_postdata();
     }
 //********************************************* FIN sous le menu "Photos" ******************************************************* */
+//********************************************* DEBUT FCT sous le menu "Photos" ************************************************* */
+// Fonction de validation JavaScript pour l'entrée (Annee)
+function scf_annee_validation_script($hook) {
+    // Charger uniquement sur les pages d'édition ou d'ajout
+    if ('post.php' === $hook || 'post-new.php' === $hook) {
+        ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const anneeField = document.querySelector('[name="annee"]');
+                if (anneeField) {
+                    anneeField.addEventListener('input', function () {
+                        // Permet uniquement 4 chiffres
+                        this.value = this.value.replace(/[^0-9]/g, '').substring(0, 4);
+                    });
+                }
+            });
+        </script>
+        <?php
+    }
+}
+add_action('admin_enqueue_scripts', 'scf_annee_validation_script');
+function valider_champ_annee($value, $field, $args) {
+    // Vérifiez si la valeur est un nombre à 4 chiffres
+    if (!preg_match('/^\d{4}$/', $value)) {
+        return 'Veuillez entrer une année valide (format : YYYY).';
+    }
+    return $value; // Retournez la valeur si elle est valide
+}
+add_filter('scf_validate_value_annee', 'valider_champ_annee', 10, 3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //********************************************* DEBUT photo_filter ************************************************************** */
 /*
 function register_photo_filter_api() {
