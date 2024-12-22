@@ -31,8 +31,21 @@
         <?php endif; ?>
     </div>
 
-    <!-- Inclusion de la modale de contact -->
-    <?php get_template_part('templates_part/contact-modal'); ?>
-</footer>
 
+    <!-- Lightbox Overlay -->
+    <div id="lightbox-overlay" class="lightbox-overlay">
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image">
+            <p class="lightbox-title"></p>
+            <button class="lightbox-prev">Précédent</button>
+            <button class="lightbox-next">Suivant</button>
+            <button class="lightbox-close">Fermer</button>
+        </div>
+    </div>
+
+   
+</footer>
+ <!-- Inclusion de la modale de contact ------------------------------------------------------------------------->
+ <?php get_template_part('templates_part/contact-modal'); ?>
+    
 <?php wp_footer(); ?>

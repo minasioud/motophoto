@@ -20,6 +20,7 @@
 <body <?php body_class(); /**  Ajoute automatiquement des classes au <body>*/ ?>> 
 <?php wp_body_open(); ?>
 
+
     <div id="page" class="site">
         <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'motophoto' ); ?></a>
         
@@ -68,6 +69,6 @@
                              
                     </nav>
                 <?php endif; ?>
-               <?php /* <button class="contact-button">CONTACT</button>   */?>
+               <?php /* <button class="contact-button" data-photo-ref="12345">CONTACT</button>   */?>
             </div>
         </header>

@@ -61,7 +61,7 @@
     <section class="photo_pagination_container">
         <div class="photo_pagination-items">
             <p>Cette photo vous intéresse ?</p>
-            <button class="contact-button contact_button">Contact</button>  
+            <button class="contact-button contact_button" data-photo-ref="12345">Contact</button>  
         </div>
         <div class="photo_pagination-nav">
             <?php

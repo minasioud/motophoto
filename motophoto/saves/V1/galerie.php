@@ -86,7 +86,7 @@
                             <h3 class="photo-title"><?php the_title(); ?></h3>
 
                             <!-- Icônes au survol -->
-                            <div class="info-photo-icons" title="Voir les informations">
+                            <div class="info-photo-icons">
                                 <!-- Icône œil pour afficher les informations -->
                                 <a href="<?php the_permalink(); ?>" class="info-icon" title="Voir les informations">
                                     <i class="far fa-eye"></i>
@@ -100,9 +100,10 @@
                             </div>
                         </div>
                         
-                        <!-- A supprimer !!!!!!!!!!! -->
                         <div class="photo-info">
+                            
                             <?php 
+                                
                                 // Fonction SCF pour récupérer le champ
                                 $reference = get_field('Reference');
                                 $type = get_field('Type');
@@ -133,9 +134,8 @@
                                     echo '</p>';
                                 }
                             ?>
-                        </div>
-                        <!-- A supprimer !!!!!!!!!!! -->
 
+                        </div>
                     </div>
                     <?php
                 endif;
