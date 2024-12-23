@@ -68,8 +68,8 @@
             // Afficher la pagination
             the_posts_pagination(array(
                 'mid_size'  => 2,
-                'prev_text' => __('&laquo; Précédent', 'textdomain'),
-                'next_text' => __('Suivant &raquo;', 'textdomain'),
+                'prev_text' => __('&laquo; Précédent', 'motophoto'),
+                'next_text' => __('Suivant &raquo;', 'motophoto'),
             ));
             ?>
         </div>
@@ -85,7 +85,7 @@
             // Crée une requête pour récupérer les posts du type "galerie_photo"
             $args = array(
                 'post_type' => 'galerie_photo',   // Filtrer uniquement le type "galerie_photo"
-                'posts_per_page' => 2,   // Récupérer toutes les photos
+                'posts_per_page' => 2,   // Récupérer deux photos
                 'orderby' => 'rand',             // Trier aléatoirement
             );
 
@@ -97,12 +97,12 @@
                 while ( $photo_query->have_posts() ) : $photo_query->the_post();
                     // Récupère l'ID de l'image à la Une
                     if ( has_post_thumbnail() ) :
-                        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' );  // Utilise la taille 'large' pour la galerie
+                        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'medium');  // Utilise la taille 'medium' pour la galerie
         ?>
                         <div class="photo-item">
                             <div class="photo-img">
                                 <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php the_title(); ?>">
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
                                 </a>
                                 <h3 class="photo-title"><?php the_title(); ?></h3>
                             </div>
@@ -114,13 +114,8 @@
                 <p>Aucune photo trouvée.</p>
             <?php endif; ?>
         <?php
-
-
             wp_reset_postdata();  // Réinitialiser la requête globale après la boucle
-    
         ?>
     </section> 
 </section>
-            
-
 <?php get_footer(); ?>

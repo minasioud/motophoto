@@ -1,15 +1,22 @@
 /*
 Theme Name:   Motophoto
-Theme URI:    https://wordpress.org/themes/twentytwentyone/
+Theme URI:    https://www.minasioud.com/themes/
 Description:  Thème Motophoto basé sur le thème Twenty Twenty-One
 Author:       SIOUD AMINA
 Author URI:   https://wordpress.org/
-Template:     twentytwentyone
-Version:      1.0.0
-Text Domain:  twentytwentyonechild
+Version:      1.0
+License: GNU General Public License v2 or later
 */
+
 /* Déclaration de la variable pour des couleurs */
 :root {
+
+    /* Font Family */
+    --global--font-primary: var(--font-headings, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+    --global--font-secondary: var(--font-base, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+
+    /* Colors */
+
     --couleur-rouge: #E00000;
     --couleur-rouge-clair: #FE5858;
     --couleur-rose-clair: #FFD6D6;
@@ -18,7 +25,31 @@ Text Domain:  twentytwentyonechild
     --couleur-gris-clair: #C4C4C4;
     --couleur-gris-plus-clair: #D8D8D8;
     --couleur-gris-encore-plus-clair: #E5E5E5;
+
 }
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* Empêcher le scrolling horizontal */
+    overflow-x: hidden;
+}
+
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+    margin: 0;
+    /* Empêcher le scrolling horizontal */
+
+}
+
+
+
 
 .galerie-photos-plus .contact_button:active,
 .photo_pagination-items .contact_button:active {
@@ -37,12 +68,6 @@ Text Domain:  twentytwentyonechild
     100% {
         transform: scale(1);
     }
-}
-
-/* Empêcher le scrolling horizontal */
-html,
-body {
-    overflow-x: hidden;
 }
 
 /* Style H1 Desktop */
@@ -373,7 +398,7 @@ button.no-focus:focus {
     font-weight: 400;
     border-radius: 2px;
     /* Supprime les points */
-    outline: none;
+    outline: none !important;
 }
 
 /* Ajouter un effet au survol */
@@ -996,61 +1021,7 @@ button.no-focus:focus {
     color: #000000;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-.photo_pagination-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-end;
-    width: 39vw;
-    margin: 0;
-
-    border: solid 1px #4f00fa;
-}
-
-.photo-navigation .nav-previous,
-.photo-navigation .nav-next {
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.photo-navigation .nav-previous:hover,
-.photo-navigation .nav-next:hover {
-    color: #0073aa;
-}
-
-
-
-.pagination {
-    margin: 20px 0;
-    text-align: center;
-}
-
-*/
-
 /******************************************* ACCUEIL-SINGLE FIN ******/
-
 /*********************************************************** Footer ****************/
 .footer-conteneur {
     /*border: solid 1px #2c03f7;*/
@@ -1110,252 +1081,4 @@ button.no-focus:focus {
     margin: 0;
     padding: 0;
 
-
-}
-
-/*******************************mobile************ max-width: 700px **************************************/
-@media all and (max-width: 700px) {
-    /*
-    .conteneur_header {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-
-        width: 100%;
-        height: 60vh;
-        padding: 20px;
-
-
-        border: solid 1px #E00000;
-    }
-
-    .logo_conteneur {
-        width: 80vw;
-        height: 30vw;
-        border: solid 1px #33ff00;
-    }
-
-
-
-    .nav_conteneur {
-        display: none;
-        width: 100vw;
-        height: 95vh;
-        background-color: #FFF5E9;
-        color: rgb(3, 3, 3);
-        z-index: 1001;
-        flex-direction: column;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        padding: 20px 0px 20px 0px;
-        box-sizing: border-box;
-        overflow: hidden;
-
-        border: solid 1px #2c03f7;
-    }
-
-    .nav_conteneur a {
-        color: #070707;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 54.41px;
-        text-decoration: none;
-        font-size: 25px;
-        font-weight: 400;
-        line-height: 40px;
-        text-decoration: none;
-
-        border: solid 1px #2c03f7;
-    }
-
-    .nav_conteneur ul {
-        list-style: none;
-        padding: 0;
-        text-align: center;
-        margin-top: 0;
-        margin: 0;
-        width: 100%;
-
-
-    }
-
-    .nav_conteneur li {
-        margin: 15px 0;
-    }
-*/
-}
-
-
-/*******************************tablette************ max-width: 1192px *** min-width: 701px **************************************/
-@media (min-width: 701px) and (max-width: 1192px) {}
-
-/*.hero {
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-}
-
-.photo-grid-item {
-    position: relative;
-}
-
-.photo-grid-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.photo-grid-item:hover .icons {
-    display: flex;
-}
-
-.icons {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    gap: 10px;
-}
-
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.photo-info-page {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.photo-info-page .info {
-    flex: 1 1 50%;
-}
-
-.photo-info-page .photo {
-    flex: 1 1 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#site-footer {
-    display: block;
-    visibility: visible;
-    height: auto;
-    background: #f8f8f8;
-    color: #333;
-    padding: 20px;
-    text-align: center;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .primary-navigation .menu-wrapper {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-
-/*
-
-/* Exemple de personnalisation : changer la couleur d'arrière-plan 
-body {
-    background-color: #f5f5f5;
-}
-
-/* Styles pour le header 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-}
-
-/* Styles pour le menu principal 
-.main-menu a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-}
-
-.main-menu a:hover {
-    text-decoration: underline;
-}
-
-/* Styles pour la modale de contact 
-.modal {
-    display: none;
-    /* Masqué par défaut 
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-    border-radius: 8px;
-    animation: fadeIn 0.5s;
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Animation 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Classe pour masquer la modale 
-.hidden {
-    display: none;
 }

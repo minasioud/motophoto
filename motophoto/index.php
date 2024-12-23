@@ -16,20 +16,20 @@ get_header();
             the_post();
 
             // Afficher le contenu des articles
-            get_template_part( 'templates-part/content', get_post_type() );
+            get_template_part( 'templates-part', get_post_type() );
 
         endwhile;
 
         // Pagination
         the_posts_pagination( array(
             'mid_size'  => 2,
-            'prev_text' => __( 'Previous', 'twentytwentyone' ),
-            'next_text' => __( 'Next', 'twentytwentyone' ),
+            'prev_text' => __( 'Previous', 'motophoto' ),
+            'next_text' => __( 'Next', 'motophoto' ),
         ) );
 
     else :
         // Message si aucun contenu
-        get_template_part( 'template-parts/content', 'none' );
+        get_template_part( 'template-parts', 'none' );
     endif;
     ?>
 

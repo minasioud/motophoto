@@ -4,17 +4,17 @@
  *
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @subpackage motophoto
+ * @since motophoto 1.0
  * Autor: mina
  */
 ?>
-<div id="contact-modal" class="contact-modal" >
+<div id="contact-modal" class="contact-modal" role="dialog" aria-labelledby="contact-modal-label" aria-hidden="true">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>CONTACT</h2>
+            <h2 id="contact-modal-label">CONTACT</h2>
 
-            <span class="close-modal">
+            <span class="close-modal" aria-label="Close modal">
                 <i class="fa fa-times"></i>                
             </span>
         </div>
@@ -24,5 +24,6 @@
         </div>
     </div>
 </div>
+
 
 

@@ -1,27 +1,33 @@
 <?php
 /**
- * Functions and definitions for the Motophoto child theme.
+ * Functions and definitions for the Motophoto theme.
  */
 
-// Charger les styles du thème parent et du thème enfant
 function motophoto_enqueue_styles() {
-    $parent_style = 'twenty-twenty-one-style'; // Identifiant du style parent
     $theme = wp_get_theme();
 
-    // Charger le style parent
-    wp_enqueue_style(
-        $parent_style,
-        get_template_directory_uri() . '/style.css',
-        [],
-        $theme->parent()->get('Version')
-    );
-
-    // Charger le style enfant
+    // Charger le style principal du thème
     wp_enqueue_style(
         'motophoto-style',
         get_stylesheet_uri(),
-        [$parent_style],
+        [],
         $theme->get('Version')
+    );
+
+    // Charger le CSS mobile
+    wp_enqueue_style(
+        'mobile-css',
+        get_stylesheet_directory_uri() . '/assets/css/mobile.css',
+        [],
+        filemtime(get_stylesheet_directory() . '/assets/css/mobile.css')
+    );
+
+    // Charger le CSS tablette
+    wp_enqueue_style(
+        'tab-css',
+        get_stylesheet_directory_uri() . '/assets/css/tab.css',
+        [],
+        filemtime(get_stylesheet_directory() . '/assets/css/tab.css')
     );
 
     // Charger les polices Google Fonts
@@ -31,6 +37,7 @@ function motophoto_enqueue_styles() {
         [],
         null
     );
+
     wp_enqueue_style(
         'poppins-google-fonts',
         'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap',
@@ -38,13 +45,20 @@ function motophoto_enqueue_styles() {
         null
     );
 
-    // Charger Font Awesome
     // Charger les polices Font Awesome
     wp_enqueue_style(
         'font-awesome',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css',
         false
     );
+
+// Charger le CSS mobile
+wp_enqueue_style(
+    'basic-css',
+    get_stylesheet_directory_uri() . '/assets/css/basic.css',
+    [],
+    filemtime(get_stylesheet_directory() . '/assets/css/basic.css')
+);
 
 }
 add_action('wp_enqueue_scripts', 'motophoto_enqueue_styles');
@@ -90,49 +104,62 @@ function motophoto_enqueue_scripts() {
     // Ajouter des données dynamiques pour les scripts
     wp_localize_script('filter-script', 'ajax_object', [
         'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('mon_nonce'),
+        'nonce'    => wp_create_nonce('motophoto_nonce'),
     ]);
 
 }
 add_action('wp_enqueue_scripts', 'motophoto_enqueue_scripts');
 
-// Configurer le thème enfant
+// Configurer le thème Motophoto
 function motophoto_setup() {
     // Support des menus
     add_theme_support('menus');
 
     // Déclarer les menus
     register_nav_menus([
-        'main-menu'   => __('Menu Principal', 'twentytwentyonechild'),
-        'footer-menu' => __('Menu Pied de page', 'twentytwentyonechild'),
+        'main-menu'   => __('Menu Principal', 'motophoto'),
+        'footer-menu' => __('Menu Pied de page', 'motophoto'),
     ]);
 
     // Support des images mises en avant
     add_theme_support('post-thumbnails');
+
+    // Support des balises HTML5
+    add_theme_support('html5', ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption']);
+
+    // Support des titres dynamiques
+    add_theme_support('title-tag');
+
 }
 add_action('after_setup_theme', 'motophoto_setup');
 
 // Personnalisation de la longueur des extraits d'articles
 function motophoto_custom_excerpt_length($length) {
-    return 20; // Par défaut, WordPress affiche 55 mots
+    return 20; // Limiter les extraits à 20 mots
 }
 add_filter('excerpt_length', 'motophoto_custom_excerpt_length');
 
 // Utiliser un modèle personnalisé pour le post type "photo"
 function photo_custom_post_type_template($template) {
     if (is_post_type_archive('photo')) {
-        $theme_files = ['galerie.php'];
-        $exists_in_theme = locate_template($theme_files, false);
-        if ($exists_in_theme != '') {
-            return $exists_in_theme;
+        $custom_template = locate_template(['galerie.php']);
+        if ($custom_template) {
+            return $custom_template;
         }
     }
     return $template;
 }
 add_filter('archive_template', 'photo_custom_post_type_template');
 
+
 // Inclure tous les fichiers PHP dans le dossier /assets/inc/
 $inc_dir = get_stylesheet_directory() . '/assets/inc/';
-foreach (glob($inc_dir . '*.php') as $file) {
-    require_once $file;
+
+// Vérifier si le dossier existe et inclure les fichiers PHP
+if (is_dir($inc_dir)) {
+    foreach (glob($inc_dir . '*.php') as $file) {
+        if (file_exists($file)) {
+            require_once $file;
+        }
+    }
 }
