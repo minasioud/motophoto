@@ -38,6 +38,12 @@
             </div>
             
             <div class="nav_conteneur">
+                   <!-- Menu burger -->
+        <div class="menu-burger" id="burger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
                 <!-- Navigation Menu -->
                 <?php 
                     if ( has_nav_menu( 'main-menu' ) ) : ?>

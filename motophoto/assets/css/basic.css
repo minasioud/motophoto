@@ -427,7 +427,7 @@ abbr[title] {
 	/* 1 */
 	text-decoration: underline;
 	/* 2 */
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 	/* 2 */
 }
 
@@ -559,7 +559,7 @@ button:-moz-focusring,
 [type=button]:-moz-focusring,
 [type=reset]:-moz-focusring,
 [type=submit]:-moz-focusring {
-	outline: 1px dotted ButtonText;
+	outline: 1px solid ButtonText;
 }
 
 /**
@@ -1282,11 +1282,13 @@ select {
 	padding: var(--form--spacing-unit) calc(3 * var(--form--spacing-unit)) var(--form--spacing-unit) var(--form--spacing-unit);
 	background: var(--global--color-white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2328303d'><polygon points='0,0 10,0 5,5'/></svg>") no-repeat;
 	background-position: right var(--form--spacing-unit) top 60%;
+
 }
 
 select:focus {
 	outline-offset: 2px;
-	outline: 2px dotted var(--form--border-color);
+	outline: 1px solid var(--form--border-color);
+
 }
 
 .is-dark-theme select {
@@ -1334,7 +1336,7 @@ License: MIT.
 
 	input[type=checkbox]:focus {
 		outline-offset: 2px;
-		outline: 2px dotted var(--form--border-color);
+		outline: 1px solid var(--form--border-color);
 	}
 
 	input[type=checkbox]:after {
@@ -1366,7 +1368,7 @@ License: MIT.
 
 	input[type=radio]:focus {
 		outline-offset: 2px;
-		outline: 2px dotted var(--form--border-color);
+		outline: 1px solid var(--form--border-color);
 	}
 
 	input[type=radio]:after {
@@ -1392,7 +1394,7 @@ License: MIT.
 
 	input[type=radio]:checked:focus {
 		outline-offset: 4px;
-		outline: 2px dotted var(--form--border-color);
+		outline: 1px solid var(--form--border-color);
 	}
 }
 
@@ -1628,7 +1630,7 @@ a {
 }
 
 a:hover {
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 	text-decoration-skip-ink: none;
 }
 
@@ -1636,7 +1638,7 @@ a:hover {
 
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
-	text-decoration: underline 1px dotted currentColor;
+	text-decoration: underline 1px solid currentColor;
 	text-decoration-skip-ink: none;
 	background: rgba(255, 255, 255, 0.9);
 }
@@ -1677,7 +1679,7 @@ a:hover {
 }
 
 .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button) img {
-	outline: 2px dotted var(--wp--style--color--link, var(--global--color-primary));
+	outline: 1px solid var(--wp--style--color--link, var(--global--color-primary));
 }
 
 .has-background .has-link-color a,
@@ -1789,7 +1791,7 @@ input[type=reset]:focus,
 .wp-block-button .wp-block-button__link:focus,
 .wp-block-file a.wp-block-file__button:focus {
 	outline-offset: -6px;
-	outline: 2px dotted currentColor;
+	outline: 1px solid currentColor;
 }
 
 .site .button:disabled,
@@ -1881,7 +1883,7 @@ input[type=reset]:disabled,
 .is-style-outline .wp-block-button__link[style*=radius]:focus,
 .wp-block-button a.wp-block-button__link[style*=radius]:focus {
 	outline-offset: 2px;
-	outline: 2px dotted var(--button--color-background);
+	outline: 1px solid var(--button--color-background);
 }
 
 .wp-block-code {
@@ -2830,7 +2832,7 @@ dd {
 
 .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link>a:hover {
 	text-decoration: underline;
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 }
 
 .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link__content {
@@ -3348,7 +3350,7 @@ pre.wp-block-preformatted {
 .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__input:focus {
 	color: var(--form--color-text);
 	outline-offset: -2px;
-	outline: 2px dotted var(--form--border-color);
+	outline: 1px solid var(--form--border-color);
 }
 
 .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button {
@@ -5025,7 +5027,7 @@ h1.page-title {
 
 .primary-navigation a:hover {
 	text-decoration: underline;
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 }
 
 .primary-navigation a:focus {
@@ -5044,7 +5046,7 @@ h1.page-title {
 .primary-navigation .current-menu-item>a:first-child:hover,
 .primary-navigation .current_page_item>a:first-child:hover {
 	text-decoration: underline;
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 }
 
 .primary-navigation .sub-menu {
@@ -5170,7 +5172,7 @@ h1.page-title {
 
 .footer-navigation-wrapper li a:hover {
 	text-decoration: underline;
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 	text-decoration-skip-ink: none;
 	color: var(--footer--color-link-hover);
 }
@@ -5217,7 +5219,7 @@ h1.page-title {
 .navigation a:hover {
 	color: var(--global--color-primary-hover);
 	text-decoration: underline;
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 }
 
 .navigation a:focus {
@@ -5398,7 +5400,7 @@ h1.page-title {
 
 .pagination .nav-links>*:not(.dots):not(.current):hover,
 .comments-pagination .nav-links>*:not(.dots):not(.current):hover {
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 }
 
 .pagination .nav-links>*:first-child,
@@ -5580,7 +5582,7 @@ h1.page-title {
 
 .widget a:hover {
 	color: var(--footer--color-link-hover);
-	text-decoration-style: dotted;
+	text-decoration-style: solid;
 }
 
 .search-form {
