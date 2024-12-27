@@ -1,24 +1,27 @@
 /*******************************mobile************ max-width: 700px **************************************/
 @media all and (max-width: 700px) {
 
-    /************************************************** Header container */
+    /************************************************** Header container ********************************/
     .conteneur_header {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-
         width: 100vw;
         height: 8vh;
-
+        background-color: white;
         padding: 0;
         margin: 0;
 
         box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.08);
         transition: box-shadow 0.3s ease-in-out;
-        /* Animation fluide */
 
-        border: solid 1px #E00000;
+        position: fixed;
+        /* Assure que le menu est au-dessus des autres éléments */
+        z-index: 9999;
+        overflow: hidden;
+
+        /*border: solid 1px #E00000;*/
     }
 
     .logo_conteneur {
@@ -32,7 +35,16 @@
         padding: 10px;
         margin: 0;
 
-        border: solid 1px #33ff00;
+        /*border: solid 1px #33ff00;*/
+    }
+
+    .nav_conteneur {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 0 10px;
+
+        /*border: solid 1px #2c03f7;*/
     }
 
     .logo_conteneur .custom-logo-link {
@@ -44,7 +56,7 @@
         max-width: 100%;
         height: 5vh;
 
-        border: solid 1px #3700ff;
+        /*border: solid 1px #3700ff;*/
     }
 
     .logo_conteneur img {
@@ -56,57 +68,131 @@
         max-width: 100%;
         height: auto;
 
-        border: solid 1px #ffb700;
+        /*border: solid 1px #ffb700;*/
     }
 
-    .nav_conteneur .menu-wrapper {
+    /************************************************** MENU BURGER DEBUT *****************************/
+    /* Cacher le menu par défaut sur mobile */
+    .desktop-menu {
         display: none;
-        position: absolute;
-        /* top: 8vh;
-        left: 0;
-        width: 100vw;
-        background-color: white;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.08);*/
     }
 
-    /* Afficher le menu burger */
-    .menu-burger {
-        cursor: pointer;
+    /* Menu mobile avec overlay */
+    .menu-overlay {
+        display: none;
+        /* Masquer le menu par défaut */
+        position: fixed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        top: 8vh;
+        left: 0;
+        width: 100%;
+        height: 30vh;
+        background-color: #E00000;
+        color: #fff;
+        /* L'overlay sombre */
+        z-index: 999;
+
+        /*border: solid 1px #f70303;*/
+    }
+
+    /* Afficher le menu mobile lorsque la classe menu-overlay est ajoutée */
+    .menu-overlay.visible {
+        display: flex;
+        /* Afficher le menu */
+    }
+
+    /* Styles pour le menu burger */
+    .burger-menu {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        gap: 5px;
-        margin-left: auto;
-        padding: 20px;
-        background-color: #FFD5A2;
-        color: #070707;
+        justify-content: space-around;
+        align-items: center;
+        width: 40px;
+        height: auto;
+        background: #fff;
+        border: none;
+        cursor: pointer !important;
+        z-index: 1000;
+        position: relative;
+        /*border: solid 1px #ffb700;*/
     }
 
-    /* Afficher les éléments du menu lorsque le burger est cliqué */
-    .nav_conteneur.open .menu-wrapper {
-        display: block;
-        width: 35px;
-        height: 3px;
-        margin: 2px;
-        background-color: #333;
-        transition: all 0.3s ease;
+    .burger-menu span {
+        width: 30px;
+        height: 4px;
+        background-color: #000000;
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
     }
 
-    /* Animation du burger quand le menu est ouvert */
-    .nav_conteneur.open .menu-burger div:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+    /* Styles pour le menu actif (l'icône burger) */
+    .burger-menu.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
     }
 
-    .nav_conteneur.open .menu-burger div:nth-child(2) {
+    .burger-menu.active span:nth-child(2) {
         opacity: 0;
     }
 
-    .nav_conteneur.open .menu-burger div:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+    .burger-menu.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
     }
 
+    /* Liste de navigation */
+    .nav_conteneur .menu-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 90vw;
+        height: 25vh;
+
+        margin: 0;
+        padding: 0;
+
+        gap: 15px;
+        list-style: none;
+
+        /*border: solid 1px #f7b203;*/
+    }
+
+    /* Liens du menu */
+    .nav_conteneur a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+
+
+        font-size: 25px;
+        font-weight: 400;
+        color: #fff;
+
+        margin: 0;
+        padding: 0;
+
+
+
+        /*border: solid 1px #f703b2;*/
+    }
+
+    .nav_conteneur a:focus {
+        outline: none !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
+        color: #FFFFFF !important;
+    }
+
+    .nav_conteneur a:hover {
+        font-weight: 700;
+    }
+
+    /************************************************** MENU BURGER FIN *****************************/
     /************************************************** modal contact */
     /* Style de la modale */
     #contact-modal {
@@ -115,9 +201,8 @@
 
         margin: 0px;
         padding: 0px;
-
-        top: 50%;
-        /* Position verticale au centre */
+        top: 60%;
+        /* Position verticale au centre*/
         left: 50%;
         /* Position horizontale au centre */
 
@@ -276,35 +361,31 @@
         font-size: 3vw;
     }
 
-    /******************************************* FIN Modal ******/
-    /******************************************* Page ACCUEIL-front-page DEBUT ******/
-
-
-
+    /************************************************** FIN Modal ******/
+    /**************************************************** Page ACCUEIL-front-page DEBUT ******/
+    .main_container {
+        position: relative;
+        max-width: 100%;
+        /*top: 8vh;*/
+        height: auto;
+        /*border: solid 1px #E00000;*/
+    }
 
     .banner-images img {
-
         width: 100vw;
-
     }
 
     /* titre Photo Event */
     .banner-images p {
-
-
         right: 15vw;
         top: 20%;
-
         /* Contour du texte */
         -webkit-text-stroke: 1px #FFFFFF;
     }
 
-    /***** section pour ACCUEIL-galerie ****************/
-
-
-    /******************************************* Page ACCUEIL-front-page FIN ******/
-    /******************************************* Page ACCUEIL-page-galrie DEBUT ******/
-    /******************************************* Page ACCUEIL-page-galrie-filters DEBUT ******/
+    /**************************************************** Page ACCUEIL-front-page FIN ******/
+    /**************************************************** Page ACCUEIL-page-galrie DEBUT ******/
+    /****************************************************** Page ACCUEIL-page-galrie-filters DEBUT ******/
     .galerie-filters {
         width: 90vw;
         margin: 25px 0px 25px 0;
@@ -328,14 +409,12 @@
         width: 85%;
     }
 
-    /******************************************* Page ACCUEIL-page-galrie-filters FIN ******/
-    /******************************************* Page ACCUEIL-page-galrie-affichage galerie DEBUT ******/
+    /****************************************************** Page ACCUEIL-page-galrie-filters FIN ******/
+    /****************************************************** Page ACCUEIL-page-galrie-affichage galerie DEBUT ******/
     .galerie-photos {
         width: 90vw;
         grid-template-columns: repeat(1, minmax(100%, 1fr)) !important;
     }
-
-
 
     .photo-item img {
         height: 260px !important;
@@ -350,7 +429,6 @@
     /* Icône œil */
     .info-icon {
         font-size: 40px;
-
     }
 
     .full-photo-icons {
@@ -363,11 +441,10 @@
 
     .fullscreen-icon {
         font-size: 20px;
-
     }
 
 
-    /***************************************************lightbox***********/
+    /*************************************************** lightbox ***********/
     /* Lightbox Overlay */
     .lightbox-overlay {
         position: fixed;
@@ -486,7 +563,7 @@
     }
 
     /* **************************** FIN Icône œil ***************************** */
-    /******************************************* Page ACCUEIL-page-galrie-affichage galerie FIN ******/
+    /****************************************************** Page ACCUEIL-page-galrie-affichage galerie FIN ******/
     /******************************************* Page ACCUEIL-page-galrie FIN ******/
 
     /******************************************* ACCUEIL-SINGLE DEBUT ******/

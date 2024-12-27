@@ -31,7 +31,6 @@
             <button class="lightbox-close"><?php esc_html_e( 'Close', 'motophoto' ); ?></button>
         </div>
     </div>
-
 </footer>
 
 <!-- Inclusion de la modale de contact -->

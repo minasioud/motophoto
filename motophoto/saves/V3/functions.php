@@ -103,7 +103,7 @@ function motophoto_enqueue_scripts() {
 
     // Charger le fichier scripts 
     wp_enqueue_script(
-        'motophoto-burger-menu',
+        'motophoto-scripts',
         get_stylesheet_directory_uri() . '/assets/js/burger-menu.js',
         ['jquery'],
         '1.0',
