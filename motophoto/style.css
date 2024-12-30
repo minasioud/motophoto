@@ -28,10 +28,7 @@ License: GNU General Public License v2 or later
 
 }
 
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -119,7 +116,7 @@ button.no-focus:focus {
     /* Supprime les points */
 }
 
-/************************************************** Header container */
+/************************************************** Header container**************************************** */
 .conteneur_header {
     display: flex;
     flex-direction: row;
@@ -177,7 +174,7 @@ button.no-focus:focus {
     /*border: solid 1px #ffb700;*/
 }
 
-/************************************ Menu principal ***************************************/
+/************************************ Menu principal ******************************************************** */
 .nav_conteneur {
     display: flex;
     flex-direction: row;
@@ -279,7 +276,7 @@ button.no-focus:focus {
 
 /* Styles de base pour le bouton burger CACHER DANS L'AFFICHAGE STD */
 
-/************************************************** modal contact */
+/************************************************** modal contact************************************* */
 /* Style de la modale */
 #contact-modal {
     display: none;
@@ -301,16 +298,11 @@ button.no-focus:focus {
 .modal-content {
     width: 30vw;
     height: auto;
-
     max-height: 84vw;
     min-height: 250px;
-
     min-width: 250px;
-
-
     margin: 0px;
     padding: 10px;
-
     background-color: white;
     border-radius: 8px;
 
@@ -471,8 +463,9 @@ button.no-focus:focus {
     font-size: 0.8vw;
 }
 
-/******************************************* FIN Modal ******/
-/******************************************* Page ACCUEIL-front-page DEBUT ******/
+/******************************************* FIN Modal ************************************************ */
+
+/******************************************* Page ACCUEIL-front-page DEBUT **************************** */
 
 .main_container {
     max-width: 100%;
@@ -608,8 +601,8 @@ button.no-focus:focus {
 }
 
 
-/******************************************* Page ACCUEIL-page-galrie-filters FIN ******/
-/******************************************* Page ACCUEIL-page-galrie-affichage galerie DEBUT ******/
+/******************************************* Page ACCUEIL-page-galrie-filters FIN **************************** */
+/******************************************* Page ACCUEIL-page-galrie-affichage galerie DEBUT **************** */
 .galerie-photos {
     width: 80vw;
     display: grid;
@@ -649,7 +642,7 @@ button.no-focus:focus {
     display: block;
 }
 
-/************************** Icônes au survol ***********************************/
+/************************** Icônes au survol *************************************************/
 .info-photo-icons {
     position: absolute;
     top: 50%;
@@ -741,7 +734,8 @@ button.no-focus:focus {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-/*****************************************************************************************************************/
+/* **************************** FIN Icône œil *********************************************************************** */
+/**************************************************Lightbox***************************************************************/
 /* Lightbox Overlay */
 .lightbox-overlay {
     position: fixed;
@@ -836,9 +830,9 @@ button.no-focus:focus {
     color: #ff0000;
 }
 
-/* **************************** FIN Icône œil ***************************** */
+/* **************************** FIN lightbox ***************************** */
 
-
+/******a suprimer**********/
 
 .photo-info {
     width: 100%;

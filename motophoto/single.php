@@ -44,7 +44,7 @@
                         <a href="<?php the_permalink(); ?>" class="photo-link">
                             <?php if (has_post_thumbnail()) : ?>
                                 <div class="photo-thumbnail">
-                                    <?php the_post_thumbnail('medium'); // Afficher l'image à la une ?>
+                                    <?php the_post_thumbnail('large'); // Afficher l'image à la une ?>
                                 </div>
                             <?php endif; ?>
                         </a>
@@ -97,7 +97,7 @@
                 while ( $photo_query->have_posts() ) : $photo_query->the_post();
                     // Récupère l'ID de l'image à la Une
                     if ( has_post_thumbnail() ) :
-                        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'medium');  // Utilise la taille 'medium' pour la galerie
+                        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large');  // Utilise la taille 'medium' pour la galerie
         ?>
                         <div class="photo-item">
                             <div class="photo-img">
